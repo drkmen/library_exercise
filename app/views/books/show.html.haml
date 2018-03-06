@@ -20,6 +20,25 @@
   - elsif @book.status == 'Out' && @book.histories.last.user == current_user
     = render 'histories/form_edit'
 
+- if user_signed_in?
+  = render 'likes/rating_bar'
+-else
+  = render 'likes/simple_rating_bar'
+%p
+  Likes
+  = @book.likes.size
+
+%p Comments
+#comments_container
+  - @book.comments.each do |comment|
+    %p
+    = comment.user.name
+    = comment.created_at.to_formatted_s(:long)
+    = comment.text
+
+- if user_signed_in?
+  = render 'comments/form'
+
 %p History
 - @book.ordered_histories.each do |history|
   %p

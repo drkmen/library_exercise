@@ -10,8 +10,16 @@ class Book
   field :image, type: String
 
   has_many :histories, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   def ordered_histories
-    self.histories.order(taken_in: :desc)
+    histories.order(taken_in: :desc)
+  end
+
+  def book_rating
+    rating_array = likes.map { |like| like.rate.to_i }
+    return 0 if rating_array.empty?
+    (rating_array.sum / rating_array.size).round
   end
 end
