@@ -40,6 +40,8 @@ gem 'carrierwave'
 gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
 gem 'dotenv-rails', groups: [:development, :test]
 gem 'mini_magick'
+gem 'kaminari'
+gem 'bootstrap-kaminari-views'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

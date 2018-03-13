@@ -3,11 +3,12 @@
 # Controller for library books
 class BooksController < ApplicationController
   before_action :set_book, only: :show
+  before_action :set_top_books, only: :index
 
   # GET /books
   # GET /books.json
   def index
-    @books = Book.all
+    @books = Kaminari.paginate_array(Book.all).page(params[:page])
   end
 
   # GET /books/1
@@ -42,5 +43,9 @@ class BooksController < ApplicationController
 
   def book_params
     params.require(:book).permit(:name, :author, :description, :status)
+  end
+
+  def set_top_books
+    @top_books = Book.all.order_by(likes_count: :desc, histories_count: :desc).limit(5)
   end
 end
