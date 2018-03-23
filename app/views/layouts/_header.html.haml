@@ -31,7 +31,7 @@
               %li.auth-header-right
                 = link_to 'Logout', destroy_user_session_path, method: :delete
               %li.auth-header-right
-                = link_to 'Profile', profile_path
+                = link_to 'Profile', edit_user_registration_path
             - else
               %li.auth-header-right
                 = link_to 'Sign up', new_user_registration_path
