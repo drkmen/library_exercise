@@ -1,22 +1,23 @@
-.site-content
-  .row
-    .col-xs-4.col-xs-offset-4
-      %p.text-center.login-title Log in
-      = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-        = devise_error_messages!
-        .field
-          = f.text_field :name, autofocus: true, autocomplete: 'name', placeholder: 'Name', class: 'auth-input'
-        .field
-          = f.email_field :email, autofocus: true, autocomplete: 'email', placeholder: 'Email', class: 'auth-input'
-        .field
-          = f.password_field :password, autocomplete: 'off', placeholder: 'Password', class: 'auth-input'
-        .field
-          = f.password_field :password_confirmation, autocomplete: 'off', placeholder: 'Password Confirmation', class: 'auth-input'
-        .field.avatar-select-btn
-          = f.label :avatar do
-            = f.file_field :avatar
-            = f.hidden_field :avatar_cache
-        .actions
-          = f.submit 'Sign up', class: 'btn btn-success submit-auth'
-      .text-center.auth-links
-        = render 'devise/shared/links'
+.container-fluid
+  .site-content
+    .row
+      .col-xs-12.col-xs-offset-0
+        %p.text-center.login-title Log in
+        = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+          = devise_error_messages!
+          .field
+            = f.text_field :name, autofocus: true, autocomplete: 'name', placeholder: 'Name', class: 'auth-input'
+          .field
+            = f.email_field :email, autofocus: true, autocomplete: 'email', placeholder: 'Email', class: 'auth-input'
+          .field
+            = f.password_field :password, autocomplete: 'off', placeholder: 'Password', class: 'auth-input'
+          .field
+            = f.password_field :password_confirmation, autocomplete: 'off', placeholder: 'Password Confirmation', class: 'auth-input'
+          .field.avatar-select-btn
+            = f.label :avatar do
+              = f.file_field :avatar
+              = f.hidden_field :avatar_cache
+          .actions
+            = f.submit 'Sign up', class: 'btn btn-success submit-auth'
+        .text-center.auth-links
+          = render 'devise/shared/links'
