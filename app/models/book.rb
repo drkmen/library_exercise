@@ -13,6 +13,8 @@ class Book
   has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy
 
+  validates :name, :author, :description, :status, :image, presence: true
+
   def ordered_histories
     histories.order(taken_in: :desc)
   end
