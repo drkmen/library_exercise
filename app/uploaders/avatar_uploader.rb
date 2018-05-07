@@ -10,6 +10,14 @@ class AvatarUploader < CarrierWave::Uploader::Base
   storage :file
   # storage :fog
 
+  def default_url(*args)
+    # For Rails 3.1+ asset pipeline compatibility:
+    # ActionController::Base.helpers.asset_path("fallback/" + [version_name, "default.png"].compact.join('_'))
+
+    "/assets/default_avatars/" + [version_name, "default_avatar.png"].compact.join('_')
+    ActionController::Base.helpers.asset_path("/assets/default_avatars/" + [version_name, "default_avatar.png"].compact.join('_'))
+  end
+
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir
