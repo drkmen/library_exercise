@@ -19,18 +19,18 @@ RSpec.describe HistoriesController, type: :controller do
           have_http_status(200)
     end
   end
-end
 
-# # PATCH/PUT /histories/1
-# # PATCH/PUT /histories/1.json
-# def update
-#   respond_to do |format|
-#     if @history.update(returned_in: DateTime.now)
-#       format.html { redirect_back fallback_location: root_path }
-#       format.json { render json: @history, status: :ok }
-#     else
-#       format.html { redirect_back fallback_location: root_path }
-#       format.json { render json: @history.errors, status: :unprocessable_entity }
-#     end
-#   end
-# end
+  describe 'PATCH #update' do
+    before(:each) do
+      @history = History.create(book_id: @book.id, taken_in: DateTime.now, user_id: @user.id )
+    end
+    it 'update history' do
+        patch :update,
+              params: { id: @history.id,
+                        history: { returned_in: DateTime.now },
+                        book_id: @book.id,
+                        user_id: @user.id }
+        expect(response).to have_http_status(302)
+    end
+  end
+end
