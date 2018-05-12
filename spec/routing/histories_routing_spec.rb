@@ -1,5 +1,5 @@
 require 'rails_helper'
-RSpec.describe 'routes for Books', type: :routing do
+RSpec.describe 'routes for Histories', type: :routing do
   it do
     expect(post: 'books/1/histories').to route_to(controller: 'histories', action: 'create', book_id: '1')
   end
