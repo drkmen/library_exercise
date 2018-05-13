@@ -7,13 +7,6 @@ RSpec.describe BooksController, type: :controller do
   end
 
   describe 'GET #index' do
-  #   it 'assigns @books' do
-  #     book = create(:book)
-  #     get :index
-  #     # get(:index, params: { page: 5 })
-  #     expect(assigns(:books)).to eq([book])
-  #   end
-
     it 'render index template' do
       get :index
       expect(response).to render_template('index')
